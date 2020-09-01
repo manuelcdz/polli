@@ -1,0 +1,144 @@
+<!DOCTYPE html> 
+<html>
+<meta charset="utf-8" />
+<head>
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+<link
+href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
+rel='stylesheet' />
+
+<style>
+ #map {
+ width: 100%;
+ height: 475px;
+ box-shadow: 5px 5px 5px #888;
+}
+ .info {
+padding: 6px 8px;
+font: 14px/16px Arial, Helvetica, sans-serif;
+background: white;
+background: rgba(175,312,61,1);
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+border-radius: 5px;
+}
+.info h2 {
+margin: 0 0 5px;
+color: #444;
+}
+</style>
+</head>
+ <body>
+  <body oncontextmenu="return false" onkeydown="return false">
+ <div id="map"></div>
+ <script>
+
+ var osm = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: 'mapbox.outdoors'
+        });
+
+var map = L.map('map', {
+ center: [36.300, -5.800],
+ zoom: 7.5,
+ layers:osm,
+ scrollWheelZoom:true,
+});
+
+
+// COSTA NOROESTE
+ var costanoroeste = L.icon({     
+ iconUrl: ' https://image.flaticon.com/icons/svg/1163/1163764.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markercostanoroeste = L.marker([36.7924388, -6.3145706], {icon: costanoroeste}) 
+ .addTo(map) 
+ .bindPopup("<h2>Costa Noroeste</h2> Soleado </b>");
+ 
+ 
+ // BAHÍA DE CÁDIZ
+ var bahíadecádiz = L.icon({     
+ iconUrl: ' https://image.flaticon.com/icons/svg/1163/1163764.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markerbahíadecádiz = L.marker([36.4420, -6.2061], {icon: bahíadecádiz}) 
+ .addTo(map) 
+ .bindPopup("<h2>Bahía de Cádiz</h2> Soleado </b>"); 
+ 
+
+ 
+ 
+ //CAMPIÑA 
+ var campiña= L.icon({     
+ iconUrl: 'https://image.flaticon.com/icons/svg/1163/1163764.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markercampiña = L.marker([36.7184, -5.7944], {icon: campiña}) 
+ .addTo(map) 
+ .bindPopup("<h2>Campiña</h2> Soleado</b>"); 
+ 
+ 
+ 
+ 
+ 
+
+ // C. GIBRALTAR
+
+ var gibraltar = L.icon({     
+ iconUrl: 'https://image.flaticon.com/icons/svg/1163/1163763.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markergibraltar = L.marker([36.2184525, -5.4367072], {icon: gibraltar}) 
+ .addTo(map) 
+ .bindPopup("<h2>Campo de Gibraltar</h2> Intervalos de nubes bajas </b>"); 
+ 
+ 
+ 
+ 
+ //JANDA
+ var janda = L.icon({     
+ iconUrl: ' https://image.flaticon.com/icons/svg/1163/1163764.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markerjanda = L.marker([36.3428, -5.8094], {icon: janda}) 
+ .addTo(map) 
+ .bindPopup("<h2>La Janda</h2> Soleado</b>");
+ 
+ 
+ 
+
+//SIERRA
+ var sierra = L.icon({     
+ iconUrl: 'https://image.flaticon.com/icons/svg/1163/1163763.svg',     
+ iconSize: [30, 30],    
+ popupAnchor: [-1, -10] }); 
+ 
+ var markersierra = L.marker([36.8405, -5.39055], {icon: sierra}) 
+ .addTo(map) 
+ .bindPopup("<h2>Sierra</h2> Nubes de evolución</b>");
+ 
+ 
+ var title = L.control();
+ title.onAdd = function (map) {
+ var div = L.DomUtil.create('div', 'info');
+ div.innerHTML +=
+ '<h2>Cádiz</h2>13 de Junio';
+ return div;
+};
+title.addTo(map);
+ 
+
+L.control.scale().addTo(map);
+</script>
+</body>
+</html>
